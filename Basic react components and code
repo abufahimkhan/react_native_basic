@@ -1,0 +1,81 @@
+import { StatusBar } from "expo-status-bar";
+import react from "react";
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  SafeAreaView, 
+  Image,
+  TouchableWithoutFeedback, 
+  TouchableOpacity, 
+  TouchableHighlight, 
+  Alert, //alert is an api here
+  Button  } from "react-native";
+
+export default function App() {
+  const something = () => {
+    console.log("Pressed!");
+  };
+  console.log(require('./assets/favicon.png'));
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text numberOfLines={5} onPress={something}>
+        There are different types of JavaScript operators. Type Operators
+      </Text>
+
+    {/* Image components */}
+    <TouchableWithoutFeedback onPress={()=>console.log("Image Touched")}>
+    <Image source={require('./assets/favicon.png')}/>
+    </TouchableWithoutFeedback>
+    
+    <TouchableOpacity onPress={()=>console.log("Image Touched")}>
+    <Image source={require('./assets/favicon.png')}/>
+    </TouchableOpacity>
+
+    
+    <TouchableHighlight onPress={()=>console.log("Image Touched")}>
+    <Image source={require('./assets/favicon.png')}/>
+    </TouchableHighlight>
+
+    {/* button componenets using onPress function */}
+    <Button 
+    color="green"
+    title="Click  me" 
+    onPress={()=>console.log("Button Clicked")}/>
+
+    {/* button componenets using alart function */}
+    <Button 
+    color="red"
+    title="Alart me" 
+    onPress={()=>alert("Alert button worked,you clicked te button!")}/>
+
+    {/* button componenets using alart api alert,text,array */}
+    <Button 
+    color="blue"
+    title="Alart question with text" 
+    onPress={()=>Alert.alert("Are you sure?","Choose:",[
+      {text:"Yes", onPress:()=>console.log("Yes clicked")},
+      {text:"No",onPress:()=>console.log("No clicked")},
+    ])}/>
+
+    {/* button componenets using alart api,prompt,text,but this will only work on iso*/}
+    <Button 
+    color="yellow"
+    title="Alart me ios" 
+    onPress={()=>Alert.prompt("Enter Password:",text=>console.log(text))}/>
+
+    {/* Platform Module*/}
+       
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
